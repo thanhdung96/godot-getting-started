@@ -5,17 +5,15 @@ public partial class player : Area2D
 	[Export]
 	public int Speed {get; set;} = 400;
 
+	[Signal]
+	public delegate void HitEventHandler();
+
 	public Vector2 ScreenSize;
 	
  	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		ScreenSize = GetViewportRect().Size;
-
-		Position = new Vector2(
-			ScreenSize.X / 2,
-			ScreenSize.Y / 2
-		);
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -65,9 +63,6 @@ public partial class player : Area2D
 			playerSprite2D.FlipH = velocity.X < 0;
 		}
 	}
-
-	[Signal]
-	public delegate void HitEventHandler();
 
 	public void OnBodyEntered(Node2D body) {
 		Hide();
