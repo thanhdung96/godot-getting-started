@@ -31,6 +31,7 @@ public partial class main : Node
 		hud.ShowMessage("Get ready");
 
 		player player = GetNode<player>("player");
+		player.Show();
 		Marker2D startPosition = GetNode<Marker2D>("StartPosition");
 		player.Start(startPosition.Position);
 		GetNode<Timer>("StartTimer").Start();
